@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Django & React Starter</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href='{% static "stylesheets.css" %}'>
+
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    {% endblock head %}
+    {% block body %}
+    <body class="hold-transition skin-green sidebar-mini layout-boxed">
+        {% block wrapper %}
+        <div id="wrapper" class="wrapper">
+            {% block main_header %}
+            {% include "adminlte/main_header.html" %}
+            {% endblock main_header %}
+
+            {% block main_sidebar %}
+            {% include "adminlte/main_sidebar.html" %}
+            {% endblock main_sidebar %}
+
+            {% block content_wrapper %}
+            <div id="content-wrapper" class="content-wrapper">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            {% endblock content_wrapper %}
+
+            {% block footer %}
+            {% include "adminlte/footer.html" %}
+            {% endblock footer %}
+        </div>
+        {% endblock wrapper %}
+    </body>
+    {% endblock body %}
+</html>

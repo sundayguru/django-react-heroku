@@ -1,1 +1,1 @@
-web: gunicorn eduflex.wsgi
+web: gunicorn backend.wsgi

@@ -1,0 +1,16 @@
+{
+    "presets": ["react", "es2015", "stage-0"],
+    "env": {
+        "optional": ["es7.classProperties"],
+        "development": {
+            "plugins": [
+                "transform-decorators-legacy"
+            ]
+        },
+        "production": {
+            "plugins": [
+                "transform-decorators-legacy"
+            ]
+        }
+    }
+}

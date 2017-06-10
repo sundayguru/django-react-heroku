@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Django & React Starter</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" type="text/css" href='{% static "stylesheets.css" %}'>
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <noscript>This application requires javascript to function.</noscript>
+        <div id="root"></div>
+        <script src='{% static "js/vendor.bundle.js" %}'></script>
+        <script>
+
+       window.django = {
+            csrf: "{{ csrf_token }}",
+            urls: {
+                logout: '{% url "logout" %}',
+                staticRoot: '{% static "/" %}',
+                users: '{% url "emailuser-list" %}'
+            },
+            user: {
+                username: "{{ request.user.username }}",
+                full_name: "{{ request.user.get_full_name }}",
+                last_login: "{{ request.user.last_login }}",
+                permissions: immutable.Set(
+                    {% autoescape off %}JSON.parse('{{ permissions }}'){% endautoescape %}
+                )
+            }
+        };
+        </script>
+        <script src='{% static "js/bundle.js" %}'></script>
+    </body>
+</html>
